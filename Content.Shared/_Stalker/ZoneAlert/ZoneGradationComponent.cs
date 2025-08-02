@@ -8,9 +8,8 @@ namespace Content.Shared._Stalker.ZoneAlert;
 /// This is used for...
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class CanSeeZoneGradationComponent : Component
+public sealed partial class ZoneGradationComponent : Component
 {
-    public EntityUid? ParentGrid;
-
-    public ProtoId<AlertPrototype> CurrentZoneAlert = "ZoneAlert";
+    [DataField]
+    public ProtoId<AlertPrototype> ZoneAlert = "ZoneAlert";
 }

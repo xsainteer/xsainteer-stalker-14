@@ -27,7 +27,7 @@
     state: red-zone
   - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
     state: black-zone
-  name: zonegradation
-  description: zonegradation-desc
+  name: alerts-StalkerZoneGradation-name
+  description: alerts-StalkerZoneGradation-desc
   minSeverity: 0
   maxSeverity: 4

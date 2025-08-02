@@ -4,7 +4,7 @@ using Robust.Shared.Physics.Events;
 namespace Content.Shared._Stalker.ZoneAlert;
 
 /// <summary>
-/// This handles...
+/// This handles Zone Gradation Alert System.
 /// </summary>
 public sealed class ZoneGradationSystem : EntitySystem
 {
@@ -20,9 +20,6 @@ public sealed class ZoneGradationSystem : EntitySystem
     {
         if (!TryComp<CanSeeZoneGradationComponent>(args.OtherEntity, out var canSeeZoneGradation))
             return;
-
-        Log.Debug($"{(short)ent.Comp.ZoneGradation} - short value of ZoneGradation");
-        Log.Debug($"{ent.Comp.ZoneGradation.ToString()} - {ent.Comp.ZoneGradation}");
 
         _alerts.ShowAlert(args.OtherEntity, canSeeZoneGradation.ZoneAlert, (short)ent.Comp.ZoneGradation);
     }

@@ -7,7 +7,7 @@ namespace Content.Shared._Stalker.ZoneAlert;
 /// <summary>
 /// This is used for...
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class CanSeeZoneGradationComponent : Component
 {
     /// <summary>

@@ -13,3 +13,12 @@ public sealed partial class ZoneGradationTriggerComponent : Component
     /// </summary>
     public ZoneGradation ZoneGradation = ZoneGradation.GreenZone;
 }
+
+public enum ZoneGradation : short
+{
+    GreenZone,
+    GroupBase,
+    YellowZone,
+    RedZone,
+    BlackZone,
+}

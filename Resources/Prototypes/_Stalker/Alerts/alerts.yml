@@ -13,3 +13,21 @@
     state: critical
   name: StalkerChemCaustic
   description: StalkerChemCaustic
+
+- type: alert
+  id: StalkerZoneGradation
+  icons:
+  - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
+    state: green-zone
+  - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
+    state: groupbase-zone
+  - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
+    state: yellow-zone
+  - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
+    state: red-zone
+  - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
+    state: black-zone
+  name: zonegradation
+  description: zonegradation-desc
+  minSeverity: 0
+  maxSeverity: 4

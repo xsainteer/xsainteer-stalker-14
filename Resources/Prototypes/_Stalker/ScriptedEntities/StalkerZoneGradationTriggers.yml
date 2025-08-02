@@ -1,0 +1,75 @@
+- type: entity
+  id: ZoneGradationTriggerBase
+  parent: MarkerBase
+  abstract: true
+  suffix: Stalker
+  components:
+    - type: Sprite
+      layers:
+        - state: blue
+    - type: Transform
+      anchored: True
+    - type: InteractionOutline
+    - type: Clickable
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        portalFixture:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.25,-0.48,0.25,0.48"
+          mask:
+            - FullTileMask
+          layer:
+            - WallLayer
+          hard: false
+    - type: ZoneGradationTrigger
+      Pacified: true
+    - type: STAnomalyGeneratorSpawnBlocker
+      size: 10
+
+- type: entity
+  id: GreenZoneGradationTrigger
+  parent: ZoneGradationTriggerBase
+  name: Триггер Зеленой Зоны
+  description: 
+  components:
+    - type: ZoneGradationTrigger
+      zoneGradation: 0
+
+- type: entity
+  id: GroupBaseZoneGradationTrigger
+  parent: ZoneGradationTriggerBase
+  name: Триггер Зоны базы группировки
+  description: 
+  components:
+    - type: ZoneGradationTrigger
+      zoneGradation: 1
+
+- type: entity
+  id: YellowZoneGradationTrigger
+  parent: ZoneGradationTriggerBase
+  name: Триггер Желтой Зоны
+  description: 
+  components:
+    - type: ZoneGradationTrigger
+      zoneGradation: 2
+
+- type: entity
+  id: RedZoneGradationTrigger
+  parent: ZoneGradationTriggerBase
+  name: Триггер Красной Зоны
+  description: 
+  components:
+    - type: ZoneGradationTrigger
+      zoneGradation: 3
+
+- type: entity
+  id: BlackZoneGradationTrigger
+  parent: ZoneGradationTriggerBase
+  name: Триггер Черной Зоны
+  description: 
+  components:
+    - type: ZoneGradationTrigger
+      zoneGradation: 4

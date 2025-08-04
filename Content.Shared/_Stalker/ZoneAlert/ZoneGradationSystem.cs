@@ -21,6 +21,14 @@ public sealed class ZoneGradationSystem : EntitySystem
         if (!TryComp<CanSeeZoneGradationComponent>(args.OtherEntity, out var canSeeZoneGradation))
             return;
 
-        _alerts.ShowAlert(args.OtherEntity, canSeeZoneGradation.ZoneAlert, (short)ent.Comp.ZoneGradation);
+        if (ent.Comp.ZoneGradation == canSeeZoneGradation.ZoneAlert)
+            return;
+
+        if(!string.IsNullOrWhiteSpace(canSeeZoneGradation.ZoneAlert))
+            _alerts.ClearAlert(args.OtherEntity, canSeeZoneGradation.ZoneAlert);
+
+        _alerts.ShowAlert(args.OtherEntity, ent.Comp.ZoneGradation);
+
+        canSeeZoneGradation.ZoneAlert = ent.Comp.ZoneGradation;
     }
 }

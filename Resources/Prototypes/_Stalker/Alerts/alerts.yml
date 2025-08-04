@@ -15,19 +15,41 @@
   description: StalkerChemCaustic
 
 - type: alert
-  id: StalkerZoneGradation
+  id: StalkerGreenZoneGradation
   icons:
   - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
     state: green-zone
+  name: alerts-StalkerGreenZoneGradation-name
+  description: alerts-StalkerGreenZoneGradation-desc
+
+- type: alert
+  id: StalkerGroupBaseZoneGradation
+  icons:
   - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
     state: groupbase-zone
+  name: alerts-StalkerGroupBaseZoneGradation-name
+  description: alerts-StalkerGroupBaseZoneGradation-desc
+
+- type: alert
+  id: StalkerYellowZoneGradation
+  icons:
   - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
     state: yellow-zone
+  name: alerts-StalkerYellowZoneGradation-name
+  description: alerts-StalkerYellowZoneGradation-desc
+
+- type: alert
+  id: StalkerRedZoneGradation
+  icons:
   - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
     state: red-zone
+  name: alerts-StalkerRedZoneGradation-name
+  description: alerts-StalkerRedZoneGradation-desc
+
+- type: alert
+  id: StalkerBlackZoneGradation
+  icons:
   - sprite: /Textures/_Stalker/Interface/Alerts/zonegradation.rsi
     state: black-zone
-  name: alerts-StalkerZoneGradation-name
-  description: alerts-StalkerZoneGradation-desc
-  minSeverity: 0
-  maxSeverity: 4
+  name: alerts-StalkerBlackZoneGradation-name
+  description: alerts-StalkerBlackZoneGradation-desc

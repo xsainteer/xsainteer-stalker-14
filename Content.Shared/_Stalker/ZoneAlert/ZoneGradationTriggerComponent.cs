@@ -13,14 +13,5 @@ public sealed partial class ZoneGradationTriggerComponent : Component
     /// What gradation this trigger is set to.
     /// </summary>
     [DataField]
-    public ZoneGradation ZoneGradation = ZoneGradation.GreenZone;
-}
-
-public enum ZoneGradation : short
-{
-    GreenZone,
-    GroupBase,
-    YellowZone,
-    RedZone,
-    BlackZone,
+    public ProtoId<AlertPrototype> ZoneGradation;
 }

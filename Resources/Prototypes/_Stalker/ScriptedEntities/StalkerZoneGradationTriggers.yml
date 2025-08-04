@@ -33,7 +33,7 @@
   name: Триггер Зеленой Зоны
   components:
     - type: ZoneGradationTrigger
-      zoneGradation: 0
+      zoneGradation: StalkerGreenZoneGradation
 
 - type: entity
   id: GroupBaseZoneGradationTrigger
@@ -41,7 +41,7 @@
   name: Триггер Зоны базы группировки
   components:
     - type: ZoneGradationTrigger
-      zoneGradation: 1
+      zoneGradation: StalkerGroupBaseZoneGradation
 
 - type: entity
   id: YellowZoneGradationTrigger
@@ -49,7 +49,7 @@
   name: Триггер Желтой Зоны
   components:
     - type: ZoneGradationTrigger
-      zoneGradation: 2
+      zoneGradation: StalkerYellowZoneGradation
 
 - type: entity
   id: RedZoneGradationTrigger
@@ -57,7 +57,7 @@
   name: Триггер Красной Зоны
   components:
     - type: ZoneGradationTrigger
-      zoneGradation: 3
+      zoneGradation: StalkerRedZoneGradation
 
 - type: entity
   id: BlackZoneGradationTrigger
@@ -65,4 +65,4 @@
   name: Триггер Черной Зоны
   components:
     - type: ZoneGradationTrigger
-      zoneGradation: 4
+      zoneGradation: StalkerBlackZoneGradation

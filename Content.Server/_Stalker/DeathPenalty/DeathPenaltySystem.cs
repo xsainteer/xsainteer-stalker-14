@@ -18,7 +18,6 @@ public sealed class DeathPenaltySystem : GameRuleSystem<DeathPenaltyComponent>
     [Dependency] private readonly MobThresholdSystem _thresholds = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -34,11 +33,19 @@ public sealed class DeathPenaltySystem : GameRuleSystem<DeathPenaltyComponent>
     {
         base.Update(frameTime);
 
+        if(!TryGetGameRuleEntity(out var manager, out var penalty))
+            return;
+
         var query = EntityQueryEnumerator<DeathPenaltyTargetComponent>();
         while (query.MoveNext(out var uid, out var player))
         {
             if(player.NextStackResetTime <= Timing.CurTime)
                 continue;
+
+            if (!TryComp<ActorComponent>(uid, out var actor))
+                return;
+
+            manager.Deaths[actor.PlayerSession.UserId]--;
 
             SetPenalty((uid, player));
         }
@@ -135,13 +142,13 @@ public sealed class DeathPenaltySystem : GameRuleSystem<DeathPenaltyComponent>
         var query = EntityQueryEnumerator<DeathPenaltyManagerComponent, DeathPenaltyComponent, GameRuleComponent>();
         while (query.MoveNext(out var uid, out death!, out penalty!, out var rule))
         {
-            return !GameTicker.IsGameRuleActive(uid, rule);
+            return GameTicker.IsGameRuleActive(uid, rule);
         }
 
         return false;
     }
 
-    public bool TryGetDeathStacks(string ckey, out uint stacks, DeathPenaltyTargetComponent? target = null)
+    public bool TryGetDeathStacks(string ckey, out int stacks, DeathPenaltyTargetComponent? target = null)
     {
         stacks = 0;
 
@@ -163,8 +170,6 @@ public sealed class DeathPenaltySystem : GameRuleSystem<DeathPenaltyComponent>
         {
             if (stacks > penalty.MaxDeathStacks)
                 stacks = penalty.MaxDeathStacks;
-
-            SetPenalty((uid, comp));
             return true;
         }
 
@@ -172,7 +177,7 @@ public sealed class DeathPenaltySystem : GameRuleSystem<DeathPenaltyComponent>
         return false;
     }
 
-    public void SetDeathStacks(string ckey, uint stacks)
+    public void SetDeathStacks(string ckey, int stacks)
     {
         if(!_player.TryGetUserId(ckey, out var userId))
             return;

@@ -10,7 +10,7 @@ public sealed partial class DeathPenaltyComponent : Component
     /// max amount of death stacks a player can have
     /// </summary>
     [DataField]
-    public uint MaxDeathStacks = 10;
+    public int MaxDeathStacks = 10;
 
     /// <summary>
     /// Time it takes for a stack to reset

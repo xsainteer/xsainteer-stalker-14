@@ -7,7 +7,7 @@ namespace Content.Server._Stalker.DeathPenalty;
 [AdminCommand(AdminFlags.Admin)]
 public sealed class SetDeathStacksCommand : IConsoleCommand
 {
-    [Dependency] private readonly DeathPenaltySystem _penaltySystem = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
 
     public string Command => "setdeathstacks";
     public string Description => "Sets the death penalty stacks for a player.";
@@ -21,18 +21,19 @@ public sealed class SetDeathStacksCommand : IConsoleCommand
             return;
         }
 
-        if (uint.TryParse(args[1], out var stacksAmount))
+        if (int.TryParse(args[1], out var stacksAmount))
             return;
 
-        _penaltySystem.SetDeathStacks(args[0], stacksAmount);
+        var penaltySystem = _entityManager.System<DeathPenaltySystem>();
+
+        penaltySystem.SetDeathStacks(args[0], stacksAmount);
     }
 }
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class GetDeathStacksCommand : IConsoleCommand
 {
-    [Dependency] private readonly DeathPenaltySystem _penaltySystem = default!;
-
+    [Dependency] private readonly IEntityManager _entityManager = default!;
     public string Command => "getdeathstacks";
     public string Description => "Gets the death stacks of an entity.";
     public string Help => $"Usage: {Command} <CKey>";
@@ -45,7 +46,9 @@ public sealed class GetDeathStacksCommand : IConsoleCommand
             return;
         }
 
-        _penaltySystem.TryGetDeathStacks(args[0], out var stacks);
+        var penalty = _entityManager.System<DeathPenaltySystem>();
+
+        penalty.TryGetDeathStacks(args[0], out var stacks);
 
         shell.WriteLine(stacks.ToString());
     }

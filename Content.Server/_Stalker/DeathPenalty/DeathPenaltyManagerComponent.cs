@@ -13,5 +13,5 @@ public sealed partial class DeathPenaltyManagerComponent : Component
     /// times a player has died, mapped to their NetUserId.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<NetUserId, uint> Deaths = new();
+    public Dictionary<NetUserId, int> Deaths = new();
 }

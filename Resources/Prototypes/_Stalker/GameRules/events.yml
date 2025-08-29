@@ -24,3 +24,11 @@
         types:
           Psy: 2
       damageTime: 128
+
+- type: entity
+  parent: BaseGameRule
+  id: STDeathPenalty
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: DeathPenalty
+    - type: DeathPenaltyManager
